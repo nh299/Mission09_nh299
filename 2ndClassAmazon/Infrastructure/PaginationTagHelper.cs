@@ -52,7 +52,7 @@ namespace _2ndClassAmazon.Infrastructure
                         ? PageClassSelected : PageClassNormal);
                 }
                 tb.InnerHtml.Append(i.ToString());
-
+                tb.AddCssClass(PageClass);
                 final.InnerHtml.AppendHtml(tb);
             }
 

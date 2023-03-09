@@ -35,6 +35,11 @@ namespace _2ndClassAmazon
             });
             services.AddScoped<IBookstoreRepository, EFBookstoreRepository>();
             services.AddSingleton<UrlHelperFactory>();
+
+            services.AddRazorPages();
+
+            services.AddDistributedMemoryCache();
+            services.AddSession();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -47,12 +52,27 @@ namespace _2ndClassAmazon
 
             //Corresponds to wwwroot
             app.UseStaticFiles();
-
+            app.UseSession();
             app.UseRouting();
 
             app.UseEndpoints(endpoints =>
             {
+
+                endpoints.MapControllerRoute("typepage",
+                    "{category}/Page{pageNum}",
+                    new { Controller = "Home", action = "Index", pageNum = 1 });
+
+                endpoints.MapControllerRoute("Paging", 
+                    "Page{pageNum}", 
+                    new { Controller = "Home", action = "Index", pageNum = 1});
+
+                endpoints.MapControllerRoute("type",
+                    "{category}",
+                    new { Controller = "Home", action = "Index" });
+
                 endpoints.MapDefaultControllerRoute();
+
+                endpoints.MapRazorPages();
             });
         }
 }

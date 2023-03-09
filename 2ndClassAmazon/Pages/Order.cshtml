@@ -1,0 +1,43 @@
+﻿@page
+@model _2ndClassAmazon.Pages.OrderModel
+@{
+}
+
+<h1>Your Cart</h1>
+@*I didn't know where to place my comment, so it's on this file. I changed/created new styling on the following files:
+Order.cshtml, _Layout.cshtml, StoreSummary.cshtml. I used these styles: bg-info text-bg-success btn-outline-dark btn-lg*@
+<table class="table table-bordered table-striped">
+    <thread>
+        <tr>
+            <th>Item</th>
+            <th>Quantity</th>
+            <th>Cost</th>
+            <th>Subtotal</th>
+        </tr>
+    </thread>
+
+    <tbody>
+        @foreach (var i in Model.cart.Items)
+        {
+            <tr>
+                <td>@i.Book.Title</td>
+                <td>@i.Quantity</td>
+                <td>@i.Book.Price</td>
+                <td>@(i.Book.Price * i.Quantity)</td>
+            </tr>
+        }
+    </tbody>
+
+    <tfoot>
+        <tr>
+            <td colspan="3">Total:</td>
+            <td>@Model.cart.CalculateTotal().ToString("c")</td>
+        </tr>
+    </tfoot>
+
+</table>
+
+@*I changed he color of the continue shopping button so that it matched the rest rest of the site*@
+<div>
+    <a class="btn btn-primary bg-info text-bg-success p-2" href="@Model.ReturnUrl">Continue Shopping</a>
+</div>
