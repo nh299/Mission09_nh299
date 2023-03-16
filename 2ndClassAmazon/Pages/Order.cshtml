@@ -4,8 +4,6 @@
 }
 
 <h1>Your Cart</h1>
-@*I didn't know where to place my comment, so it's on this file. I changed/created new styling on the following files:
-Order.cshtml, _Layout.cshtml, StoreSummary.cshtml. I used these styles: bg-info text-bg-success btn-outline-dark btn-lg*@
 <table class="table table-bordered table-striped">
     <thread>
         <tr>
@@ -23,7 +21,15 @@ Order.cshtml, _Layout.cshtml, StoreSummary.cshtml. I used these styles: bg-info 
                 <td>@i.Book.Title</td>
                 <td>@i.Quantity</td>
                 <td>@i.Book.Price</td>
-                <td>@(i.Book.Price * i.Quantity)</td>
+                <td>@((i.Book.Price * i.Quantity).ToString("c"))</td>
+
+                <td class="text-center">
+                    <form method="post" asp-page-handler="Remove">
+                        <input type="hidden" name="bookId" value="@i.Book.BookId" />
+                        <input type="hidden" name="returnUrl" value="@Model.ReturnUrl" />
+                        <button type="submit" class="btn btn-sm btn-danger">Remove</button>
+                    </form>
+                </td>
             </tr>
         }
     </tbody>
@@ -40,4 +46,5 @@ Order.cshtml, _Layout.cshtml, StoreSummary.cshtml. I used these styles: bg-info 
 @*I changed he color of the continue shopping button so that it matched the rest rest of the site*@
 <div>
     <a class="btn btn-primary bg-info text-bg-success p-2" href="@Model.ReturnUrl">Continue Shopping</a>
+    <a class="btn btn-primary" asp-action="Checkout" asp-controller="Order">Checkout</a>
 </div>

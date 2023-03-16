@@ -8,11 +8,21 @@
     <link href="~/lib/css/bootstrap-reboot.css" rel="stylesheet" />
     <link href="~/lib/css/bootstrap-utilities.css" rel="stylesheet" />
     <link href="~/lib/css/bootstrap.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-1/css/all.min.css" integrity="sha512-ZYg+hQvLlM0W9C3P6vTpes5LmJ66G2EsroxDNzwD6qiulckldb29eD9I672HL2X+LH5nRhY1sQqZLJGB+aUUPg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="/lib/font-awesome/css/all.min.css" rel="stylesheet" />
 </head>
+
 <body>
     @*I changed the color of the navbar to match that of the price boxes*@
     <div class="bg-info text-bg-success p-2">
-        <span class="navbar-brand ml-2">Great Value Amazon</span>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col navbar-brand">Great Value Amazon</div>
+                <div class="col-6 text-right">
+                    <vc:cart-summary />
+                </div>
+            </div>
+        </div>
     </div>
     <div class="row m-1 p-1">
         <div id="categories" class="col-3">
@@ -25,6 +35,6 @@
         </div>
     </div>
 
-        <footer></footer>
+    <footer></footer>
 </body>
 </html>

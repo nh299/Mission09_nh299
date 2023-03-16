@@ -1,0 +1,49 @@
+﻿@{
+}
+
+@model Order
+
+<h2>Check out now</h2>
+<p>Please enter your details, and we will get your order out soon!</p>
+
+<form method="post" asp-controller="Order" asp-action="Checkout">
+
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <h4>Ship To</h4>
+    @*Below are all my Input fields for an Order Checkout*@
+    <div class="form-group">
+        <label asp-for="FirstName">First Name:</label><input asp-for="FirstName" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="LastName">Last Name:</label><input asp-for="LastName" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Phone">Phone Number:</label><input asp-for="Phone" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Email">Email:</label><input asp-for="Email" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="AddressLine">Street Address:</label><input asp-for="AddressLine" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="City">City:</label><input asp-for="City" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="State">State:</label><input asp-for="State" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Zip">Zip Code:</label><input asp-for="Zip" class="form-control" />
+    </div>
+    <div class="form-end">
+        <input class="btn btn-primary" type="submit" value="Purchase" />
+    </div>
+</form>
